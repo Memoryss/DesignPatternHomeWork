@@ -19,7 +19,18 @@ public class RetailerB implements Retailer {
 
 	@Override
 	public void BuyCars(Car car) {
+		//检测车
+		if (!car.Check()) {
+			System.out.println("Car check error");
+			return;
+		}
 		
+		
+		//将车添加进库存中
+		cars.add(car);
+		
+		//通知网上销售平台 有车购入
+		notifySalePlatform();
 	}
 	
 	//设置销售平台
@@ -33,7 +44,7 @@ public class RetailerB implements Retailer {
 			return;
 		}
 		
-		
+		carSale.NotifyNewCar(cars.get(cars.size() - 1));
 	}
 
 	@Override

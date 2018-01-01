@@ -31,8 +31,15 @@ public class RetailerA implements Retailer{
 			return;
 		}
 		
+		//检测车
+		if (!car.Check()) {
+			System.out.println("Car check error");
+			return;
+		}
+		
 		//将车添加进库存中
 		cars[carNums] = car;
+		++carNums;
 		
 		//通知网上销售平台 有车购入
 		notifySalePlatform();
@@ -49,7 +56,7 @@ public class RetailerA implements Retailer{
 			return;
 		}
 		
-		this.carSale.;
+		this.carSale.NotifyNewCar(cars[carNums-1]);
 	}
 
 	@Override

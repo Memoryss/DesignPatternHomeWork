@@ -3,8 +3,9 @@ import java.util.Iterator;
 
 //TODO 应该在抽象一层，但是考虑目前只有一个汽车零售店  就不抽象了
 public class CarSale {
-	private ArrayList<Customer> customers;
-	private ArrayList<Retailer> retailers;
+	private ArrayList<Customer> customers; //顾客
+	private ArrayList<Retailer> retailers; //零售店
+	private Car newCar = null; //保存下新买进的车
 	
 	CarSale() {
 		customers = new ArrayList<Customer>();
@@ -51,10 +52,36 @@ public class CarSale {
 		this.retailers.remove(r);
 	}
 	
+	//被通知有新车到货
+	public void NotifyNewCar(Car car) {
+		this.newCar = car;
+		this.NofifyCustomers(car);
+	}
+	
+	//查看所有的car
+	public void ViewAllCars() {
+		for (int i = 0; i < this.retailers.size(); ++i) {
+			Iterator<Car> iter = this.retailers.get(i).CreateIterator();
+			while (iter.hasNext()) {
+				System.out.println("Brand:" + iter.next().GetBrand() + ", Type:" + iter.next().GetType());
+			}
+		}
+	}
+	
+	//查看最新的车
+	public void ViewNewCar() {
+		if (newCar == null) {
+			System.out.println("No New Car");
+			return;
+		}
+		
+		System.out.println("Brand:" + newCar.GetBrand() + ", Type:" + newCar.GetType());
+	}
+	
 	//通知客户
-	public void NofifyCustomers(Car car) {
+	protected void NofifyCustomers(Car car) {
 		for (int i = 0; i < this.customers.size(); ++i) {
-			this.customers.get(i).Notify(car);
+			this.customers.get(i).Notify(this);
 		}
 	}
 }
