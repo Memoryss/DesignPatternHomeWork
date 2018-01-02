@@ -4,9 +4,11 @@ public class RetailerIterator implements Iterator<Car> {
 	
 	private Car[] cars = null;
 	private int position = 0;
+	private int size = 0;
 	
-	RetailerIterator(Car[] cars) {
+	RetailerIterator(Car[] cars, int size) {
 		this.cars = cars;
+		this.size = size;
 	}
 	
 	@Override
@@ -15,12 +17,12 @@ public class RetailerIterator implements Iterator<Car> {
 			return false;
 		}
 		
-		return position < cars.length;
+		return position < this.size;
 	}
 
 	@Override
 	public Car next() {
-		if (position >= cars.length) {
+		if (position >= this.size) {
 			return null;
 		}
 		

@@ -61,7 +61,7 @@ public class RetailerA implements Retailer{
 
 	@Override
 	public Iterator<Car> CreateIterator() {
-		return new RetailerIterator(cars);
+		return new RetailerIterator(cars, carNums);
 	}
 	
 }

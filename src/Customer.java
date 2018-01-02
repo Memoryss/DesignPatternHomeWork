@@ -1,7 +1,12 @@
 
 public class Customer {
 	
+	private int id;
 	private CarSale nofifyCarPlatform;
+	
+	Customer(int id) {
+		this.id = id;
+	}
 	
 	//浏览网店 并注册自己
 	public void BrowserCars(CarSale carPlatform) {
@@ -9,6 +14,7 @@ public class Customer {
 	}
 	
 	public void Notify(CarSale carSale) {
+		System.out.println("customer_" + this.id + " notified of new car");
 		nofifyCarPlatform = carSale;
 	}
 	
@@ -28,5 +34,9 @@ public class Customer {
 		}
 		
 		nofifyCarPlatform.ViewAllCars();
+	}
+	
+	public int GetID() {
+		return this.id;
 	}
 }

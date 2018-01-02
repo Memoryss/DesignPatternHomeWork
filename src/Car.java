@@ -34,6 +34,7 @@ public abstract class Car {
 	
 	//对汽车进行检查  检查ok返回true， 有问题返回false
 	public boolean Check() {
+		System.out.println("car brand:" + this.carBrand + ", car type:" + this.carType + " checking:");
 		boolean success = true;
 		if (!this.checkTyre()) {
 			System.out.println("check tyre error");

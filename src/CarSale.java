@@ -15,7 +15,7 @@ public class CarSale {
 	//注册客户
 	public void RegisterCustomer(Customer customer) {
 		if (customers.contains(customer)) {
-			System.out.println("You have already registered");
+			System.out.println("customer_" + customer.GetID() + " have already registered");
 			return;
 		}
 		
@@ -25,7 +25,7 @@ public class CarSale {
 	//注销客户
 	public void UnRegisterCustomer(Customer customer) {
 		if (!customers.contains(customer)) {
-			System.out.println("You haven't registered yet");
+			System.out.println("customer_" + customer.GetID() + " haven't registered yet");
 			return;
 		}
 		
@@ -35,21 +35,23 @@ public class CarSale {
 	//注册零售店
 	public void RegisterRetailer(Retailer r) {
 		if (retailers.contains(r)) {
-			System.out.println("You have already registered");
+			System.out.println("Retailer have already registered");
 			return;
 		}
 		
 		this.retailers.add(r);
+		r.SetSalePlatform(this);
 	}
 	
 	//注销零售店
 	public void UnRegisterRetailer(Retailer r) {
 		if (!retailers.contains(r)) {
-			System.out.println("You haven't registered yet");
+			System.out.println("Retailer haven't registered yet");
 			return;
 		}
 		
 		this.retailers.remove(r);
+		r.SetSalePlatform(null);
 	}
 	
 	//被通知有新车到货
@@ -63,7 +65,8 @@ public class CarSale {
 		for (int i = 0; i < this.retailers.size(); ++i) {
 			Iterator<Car> iter = this.retailers.get(i).CreateIterator();
 			while (iter.hasNext()) {
-				System.out.println("Brand:" + iter.next().GetBrand() + ", Type:" + iter.next().GetType());
+				Car car = iter.next();
+				System.out.println("Brand:" + car.GetBrand() + ", Type:" + car.GetType());
 			}
 		}
 	}

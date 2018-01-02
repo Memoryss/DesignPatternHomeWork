@@ -7,19 +7,19 @@ public class SedanCar extends Car {
 
 	@Override
 	protected boolean checkTyre() {
-		System.out.println("car brand:" + this.carBrand + ", car type:" + this.carType + " CheckTyre");
+		System.out.println("CheckTyre OK");
 		return true;
 	}
 
 	@Override
 	protected boolean checkSteeringWheel() {
-		System.out.println("car brand:" + this.carBrand + ", car type:" + this.carType + " CheckSteeringWheel");
+		System.out.println("CheckSteeringWheel OK");
 		return true;
 	}
 
 	@Override
 	protected boolean checkGasTank() {
-		System.out.println("car brand:" + this.carBrand + ", car type:" + this.carType + " CheckGasTank");
+		System.out.println("CheckGasTank OK");
 		return true;
 	}
 }
